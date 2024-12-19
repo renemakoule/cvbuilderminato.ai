@@ -113,7 +113,7 @@ export default function FUIHeroSectionWithLogoClouds() {
             <p className="font-geist">
             Do a quick search for your products, and clone your profile all thanks to our Minato.ai platform equipped with AI.
             Want to see how it works? Click on&nbsp;
-            <Link href='https://minato-ai.vercel.app/' className="hover:text-indigo-600"><u>Minato.ai</u></Link>
+            <Link href='https://minato-ai.vercel.app/' className="hover:text-purple-400"><u>Minato.ai</u></Link>
             </p>
             <div className="items-center gap-x-3 space-y-3 sm:flex sm:space-y-0">
               <Link href='/Cv' target="_blank">
