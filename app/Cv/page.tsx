@@ -17,6 +17,7 @@ import jsPDF from "jspdf";
 import confetti from "canvas-confetti"
 import Link from "next/link";
 import React from "react";
+import AdSystem from "../components/AdSystem";
 
 export default function Home() {
   const [personalDetails, setPersonalDetails] = useState<PersonalDetails>(personalDetailsPreset)
@@ -388,6 +389,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <AdSystem />
     </div>
   );
 }
