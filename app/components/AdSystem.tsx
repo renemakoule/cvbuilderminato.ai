@@ -56,7 +56,7 @@ export default function AdSystem() {
   useEffect(() => {
     let timeout: NodeJS.Timeout
     if (!isVisible) {
-      timeout = setTimeout(showAd, 10000) // Show next ad 10 seconds after the previous one disappears
+      timeout = setTimeout(showAd, 30000) // Show next ad 10 seconds after the previous one disappears
     }
     return () => clearTimeout(timeout)
   }, [isVisible])
