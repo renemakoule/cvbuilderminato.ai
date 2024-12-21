@@ -17,6 +17,7 @@ const ads: Ad[] = [
   { type: 'image', content: '/2.jpg', duration: 10000 },
   { type: 'video', content: '/pub.mp4', duration: 20000 },
   { type: 'video', content: '/pub1.mp4', duration: 20000 },
+  { type: 'text', content: 'Faites decouvrir votre boutique en ligne grace a notre Plateforme minato.ai', duration: 10000 },
   { type: 'video', content: '/pub2.mp4', duration: 20000 },
   { type: 'video', content: '/pub3.mp4', duration: 23000 },
   { type: 'video', content: '/pub4.mp4', duration: 20000 },
@@ -64,13 +65,13 @@ export default function AdSystem() {
   if (!isVisible || !currentAd) return null
 
   return (
-    <div className="fixed bottom-4 right-4 bg-white p-4 rounded-lg shadow-lg z-50 max-w-sm">
-      {currentAd.type === 'text' && <p>{currentAd.content}</p>}
+    <div className="fixed bottom-4 right-4 shadow-lg z-50 max-w-sm">
+      {currentAd.type === 'text' && <p className='bg-white rounded-lg p-4'>{currentAd.content}</p>}
       {currentAd.type === 'image' && (
         <Image src={currentAd.content} 
         alt="Advertisement" 
         width={200} height={200} 
-        className='rounded-md'
+        className='rounded-lg'
         />
       )}
       {currentAd.type === 'video' && (
@@ -79,7 +80,7 @@ export default function AdSystem() {
           width={300}
           height={200}
           autoPlay
-          className='rounded-md h-full w-full'
+          className='rounded-lg h-full w-full'
           onPlay={() => {
             if (videoRef.current) {
               videoRef.current.volume = 0.5; // Set video volume to 50%
