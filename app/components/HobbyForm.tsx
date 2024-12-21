@@ -41,7 +41,7 @@ const HobbyForm: React.FC<Props> = ({ hobbies, setHobbies }) => {
       />
       <button
         onClick={handleAddHobby}
-        className='btn btn-primary mt-4'
+        className='btn btn-outline btn-primary btn-xs h-10 mt-4'
       >
         Ajouter
         <Plus className='w-4' />

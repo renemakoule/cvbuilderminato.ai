@@ -184,7 +184,7 @@ export default function Home() {
               </h1>
               </Link>
 
-              <button className="btn btn-success text-xs h-6" onClick={() => (document.getElementById('my_modal_3') as HTMLDialogElement).showModal()}>
+              <button className="btn btn-success btn-outline btn-xs text-xs h-10" onClick={() => (document.getElementById('my_modal_3') as HTMLDialogElement).showModal()}>
                 Prévisualiser
                 <Eye className="w-4" />
               </button>
@@ -196,7 +196,7 @@ export default function Home() {
                 <h1 className="badge badge-primary badge-outline">Qui êtes-vous ?</h1>
                 <button
                   onClick={handleResetPersonalDetails}
-                  className="btn btn-primary btn-sm">
+                  className="btn btn-outline btn-success btn-xs h-8">
                   <RotateCw className="w-4" />
                 </button>
               </div>
@@ -211,7 +211,7 @@ export default function Home() {
                 <h1 className="badge badge-primary badge-outline">Expériences</h1>
                 <button
                   onClick={handleResetExperiences}
-                  className="btn btn-primary btn-sm">
+                  className="btn btn-outline btn-success btn-xs h-8">
                   <RotateCw className="w-4" />
                 </button>
               </div>
@@ -226,7 +226,7 @@ export default function Home() {
                 <h1 className="badge badge-primary badge-outline">Éducations</h1>
                 <button
                   onClick={handleResetEducations}
-                  className="btn btn-primary btn-sm">
+                  className="btn btn-outline btn-primary btn-xs h-8">
                   <RotateCw className="w-4" />
                 </button>
               </div>
@@ -240,7 +240,7 @@ export default function Home() {
                 <h1 className="badge badge-primary badge-outline">Langues</h1>
                 <button
                   onClick={handleResetLanguages}
-                  className="btn btn-primary btn-sm">
+                  className="btn btn-outline btn-primary btn-xs h-8">
                   <RotateCw className="w-4" />
                 </button>
               </div>
@@ -257,7 +257,7 @@ export default function Home() {
                     <h1 className="badge badge-primary badge-outline">Compétences</h1>
                     <button
                       onClick={handleResetSkills}
-                      className="btn btn-primary btn-sm">
+                      className="btn btn-outline btn-primary btn-xs h-8">
                       <RotateCw className="w-4" />
                     </button>
                   </div>
@@ -269,7 +269,7 @@ export default function Home() {
                     <h1 className="badge badge-primary badge-outline">Loisirs</h1>
                     <button
                       onClick={handleResetHobbies}
-                      className="btn btn-primary btn-sm">
+                      className="btn btn-outline btn-primary btn-xs h-8">
                       <RotateCw className="w-4" />
                     </button>
                   </div>
@@ -291,12 +291,12 @@ export default function Home() {
             <div className="flex items-center justify-center fixed z-[9999] top-5 right-5">
               <input
                 type="range"
-                min={50}
-                max={200}
+                min={30}
+                max={250}
                 value={zoom}
                 onChange={(e) => setZoom(Number(e.target.value))}
-                className="range range-xs range-primary" />
-              <p className="ml-4 text-sm text-primary">{zoom}%</p>
+                className="range range-xs range-success " />
+              <p className="ml-4 text-xs text-primary">{zoom}%</p>
             </div>
 
             <select
