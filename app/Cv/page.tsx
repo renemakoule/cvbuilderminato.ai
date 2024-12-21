@@ -349,8 +349,10 @@ export default function Home() {
                 <button onClick={handleDownloadPdf} className="btn btn-primary" disabled={isDownloading}>
                   {isDownloading ? (
                     <>
-                      Téléchargement du PDF...
-                      <span className="loading loading-spinner loading-sm"></span>
+                      Téléchargement du PDF
+                      <span className="loading loading-ring loading-xs"></span>
+                      <span className="loading loading-ring loading-xs"></span>
+                      <span className="loading loading-ring loading-xs"></span>
                     </>
                   ) : (
                     <>
