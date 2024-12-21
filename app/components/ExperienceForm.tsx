@@ -1,16 +1,14 @@
 import { Experience } from '@/type';
 import { Plus } from 'lucide-react';
 import React, { useState } from 'react'
+import { toast } from 'react-hot-toast';
 
 type Props = {
     experience: Experience[];
     setExperiences: (experience: Experience[]) => void
 }
 
-
-
 const ExperienceForm: React.FC<Props> = ({ experience, setExperiences }) => {
-
     const [newExperience, setNewExperience] = useState<Experience>({
         jobTitle: '',
         companyName: '',
@@ -19,27 +17,27 @@ const ExperienceForm: React.FC<Props> = ({ experience, setExperiences }) => {
         description: '',
     })
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, fied: keyof Experience) => {
-        setNewExperience({ ...newExperience, [fied]: e.target.value })
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, field: keyof Experience) => {
+        setNewExperience({ ...newExperience, [field]: e.target.value })
     }
 
     const handleAddExperience = () => {
-        setExperiences([...experience, newExperience])
-        setNewExperience(
-            {
+        if (Object.values(newExperience).every(value => value.trim() !== '')) {
+            setExperiences([...experience, newExperience])
+            setNewExperience({
                 jobTitle: '',
                 companyName: '',
                 startDate: '',
                 endDate: '',
                 description: '',
-            }
-        )
+            })
+            toast.success('Expérience ajoutée avec succès !');
+        } else {
+            toast.error('Veuillez remplir tous les champs avant d\'ajouter une expérience.');
+        }
     }
 
-
-
     return (
-
         <div>
             <div className='flex flex-col gap-4'>
                 <div className='flex justify-between'>
@@ -47,6 +45,7 @@ const ExperienceForm: React.FC<Props> = ({ experience, setExperiences }) => {
                         type="text"
                         placeholder='Votre poste'
                         value={newExperience.jobTitle}
+                        required
                         onChange={(e) => handleChange(e, 'jobTitle')}
                         className='input input-bordered w-full'
                     />
@@ -54,6 +53,7 @@ const ExperienceForm: React.FC<Props> = ({ experience, setExperiences }) => {
                         type="text"
                         placeholder="Nom de l'entreprise"
                         value={newExperience.companyName}
+                        required
                         onChange={(e) => handleChange(e, 'companyName')}
                         className='input input-bordered w-full ml-4'
                     />
@@ -63,6 +63,7 @@ const ExperienceForm: React.FC<Props> = ({ experience, setExperiences }) => {
                     <input
                         type="text"
                         placeholder='Date de début'
+                        required
                         onFocus={(e) => e.target.type = "date"}
                         onBlur={(e) => {
                             if (!e.target.value) e.target.type = "text"
@@ -74,6 +75,7 @@ const ExperienceForm: React.FC<Props> = ({ experience, setExperiences }) => {
                     <input
                         type="text"
                         placeholder='Date de fin'
+                        required
                         onFocus={(e) => e.target.type = "date"}
                         onBlur={(e) => {
                             if (!e.target.value) e.target.type = "text"
@@ -86,6 +88,7 @@ const ExperienceForm: React.FC<Props> = ({ experience, setExperiences }) => {
                 <textarea
                     placeholder='Description du poste'
                     value={newExperience.description}
+                    required
                     onChange={(e) => handleChange(e, 'description')}
                     className='input input-bordered w-full h-20'
                 ></textarea>
@@ -98,9 +101,9 @@ const ExperienceForm: React.FC<Props> = ({ experience, setExperiences }) => {
                 Ajouter
                 <Plus className='w-4' />
             </button>
-
         </div>
     )
 }
 
 export default ExperienceForm
+

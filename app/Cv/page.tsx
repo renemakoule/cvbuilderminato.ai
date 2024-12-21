@@ -18,6 +18,7 @@ import confetti from "canvas-confetti"
 import Link from "next/link";
 import React from "react";
 import AdSystem from "../components/AdSystem";
+import { Toaster } from "react-hot-toast";
 
 export default function Home() {
   const [personalDetails, setPersonalDetails] = useState<PersonalDetails>(personalDetailsPreset)
@@ -164,6 +165,7 @@ export default function Home() {
 
   return (
     <div>
+      <Toaster />
       <div className="hidden lg:block">
         <section className="flex items-center h-screen">
 

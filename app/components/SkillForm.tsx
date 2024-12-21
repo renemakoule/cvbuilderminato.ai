@@ -1,6 +1,7 @@
 import { Skill } from '@/type';
 import { Plus } from 'lucide-react';
 import React, { useState } from 'react'
+import { toast } from 'react-hot-toast';
 
 type Props = {
   skills: Skill[];
@@ -15,13 +16,18 @@ const SkillForm: React.FC<Props> = ({ skills, setSkills }) => {
     }
   )
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>, fied: keyof Skill) => {
-    setNewSkill({ ...newSkill, [fied]: e.target.value })
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>, field: keyof Skill) => {
+    setNewSkill({ ...newSkill, [field]: e.target.value })
   }
 
   const handleAddSkill = () => {
-    setSkills([...skills, newSkill]);
-    setNewSkill({ name: '' });
+    if (newSkill.name.trim() !== '') {
+      setSkills([...skills, newSkill]);
+      setNewSkill({ name: '' });
+      toast.success('Compétence ajoutée avec succès !');
+    } else {
+      toast.error('Veuillez entrer une compétence avant d\'ajouter.');
+    }
   }
 
   return (
@@ -29,8 +35,9 @@ const SkillForm: React.FC<Props> = ({ skills, setSkills }) => {
       <div className='mt-4'>
         <input
           type="text"
-          placeholder="compétence"
+          placeholder="Compétence"
           value={newSkill.name}
+          required
           onChange={(e) => handleChange(e, 'name')}
           className='input input-bordered w-full'
         />
@@ -48,3 +55,4 @@ const SkillForm: React.FC<Props> = ({ skills, setSkills }) => {
 }
 
 export default SkillForm
+

@@ -26,6 +26,7 @@ const PersonalDetailsForm: React.FC<Props> = ({ personalDetails, setPersonalDeta
         type="text"
         placeholder='Nom complet'
         value={personalDetails.fullName}
+        required
         onChange={(e) => handleChange(e, 'fullName')}
         className='input input-bordered w-full'
       />
@@ -34,13 +35,15 @@ const PersonalDetailsForm: React.FC<Props> = ({ personalDetails, setPersonalDeta
           type="email"
           placeholder='Email'
           value={personalDetails.email}
+          required
           onChange={(e) => handleChange(e, 'email')}
           className='input input-bordered w-full'
         />
         <input
-          type="email"
+          type="phone"
           placeholder='Numéro de téléphone'
           value={personalDetails.phone}
+          required
           onChange={(e) => handleChange(e, 'phone')}
           className='input input-bordered w-full ml-4'
         />
@@ -50,6 +53,7 @@ const PersonalDetailsForm: React.FC<Props> = ({ personalDetails, setPersonalDeta
         type="text"
         placeholder='Addresse'
         value={personalDetails.address}
+        required
         onChange={(e) => handleChange(e, 'address')}
         className='input input-bordered w-full'
       />
@@ -58,6 +62,7 @@ const PersonalDetailsForm: React.FC<Props> = ({ personalDetails, setPersonalDeta
         type="file"
         accept='image/*'
         onChange={handleFileChange}
+        required
         className='file-input file-input-bordered w-full file-input-primary'
       />
 
@@ -65,6 +70,7 @@ const PersonalDetailsForm: React.FC<Props> = ({ personalDetails, setPersonalDeta
         type="text"
         placeholder='Post Recherché'
         value={personalDetails.postSeeking}
+        required
         onChange={(e) => handleChange(e, 'postSeeking')}
         className='input input-bordered w-full'
       />
@@ -72,6 +78,7 @@ const PersonalDetailsForm: React.FC<Props> = ({ personalDetails, setPersonalDeta
       <textarea
         placeholder='Description de la personne'
         value={personalDetails.description}
+        required
         onChange={(e) => handleChange(e, 'description')}
         className='input input-bordered w-full h-36'
       ></textarea>
