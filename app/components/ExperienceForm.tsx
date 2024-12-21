@@ -8,6 +8,13 @@ type Props = {
     setExperiences: (experience: Experience[]) => void
 }
 
+const formatDate = (date: string) => {
+    if (!date) return '';
+    const [year, month, day] = date.split('-');
+    return `${day}/${month}/${year}`;
+  };
+
+
 const ExperienceForm: React.FC<Props> = ({ experience, setExperiences }) => {
     const [newExperience, setNewExperience] = useState<Experience>({
         jobTitle: '',
@@ -18,6 +25,12 @@ const ExperienceForm: React.FC<Props> = ({ experience, setExperiences }) => {
     })
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, field: keyof Experience) => {
+        if (field === 'startDate' || field === 'endDate') {
+            const formattedDate = formatDate(e.target.value);
+            setNewExperience({ ...newExperience, [field]: formattedDate });
+        } else {
+            setNewExperience({ ...newExperience, [field]: e.target.value });
+        }
         setNewExperience({ ...newExperience, [field]: e.target.value })
     }
 
@@ -60,7 +73,7 @@ const ExperienceForm: React.FC<Props> = ({ experience, setExperiences }) => {
                 </div>
 
                 <div className='flex justify-between'>
-                    <input
+                    {/* <input
                         type="text"
                         placeholder='Date de début'
                         required
@@ -71,8 +84,19 @@ const ExperienceForm: React.FC<Props> = ({ experience, setExperiences }) => {
                         value={newExperience.startDate}
                         onChange={(e) => handleChange(e, 'startDate')}
                         className='input input-bordered w-full'
-                    />
+                    /> */}
+                    <div>
+                    <label className='ml-3'>Date de début</label>
                     <input
+                        type="date"
+                        placeholder='Date de début'
+                        required
+                        value={newExperience.startDate ? newExperience.startDate.split('/').reverse().join('-') : ''}
+                        onChange={(e) => handleChange(e, 'startDate')}
+                        className='input input-bordered w-full'
+                    />
+                    </div>
+                    {/* <input
                         type="text"
                         placeholder='Date de fin'
                         required
@@ -83,7 +107,18 @@ const ExperienceForm: React.FC<Props> = ({ experience, setExperiences }) => {
                         value={newExperience.endDate}
                         onChange={(e) => handleChange(e, 'endDate')}
                         className='input input-bordered w-full ml-4'
+                    /> */}
+                    <div>
+                    <label htmlFor="Date de fin" className='ml-6'>Date de fin</label>
+                    <input
+                        type="date"
+                        placeholder='Date de fin'
+                        required
+                        value={newExperience.endDate ? newExperience.endDate.split('/').reverse().join('-') : ''}
+                        onChange={(e) => handleChange(e, 'endDate')}
+                        className='input input-bordered w-full ml-4'
                     />
+                    </div>
                 </div>
                 <textarea
                     placeholder='Description du poste'

@@ -8,6 +8,12 @@ type Props = {
     setEducations: (educations: Education[]) => void;
 }
 
+const formatDate = (date: string) => {
+  if (!date) return '';
+  const [year, month, day] = date.split('-');
+  return `${day}/${month}/${year}`;
+};
+
 const EducationForm: React.FC<Props> = ({ educations, setEducations }) => {
 
     const [newEducation, setNewEducation] = useState<Education>(
@@ -21,7 +27,12 @@ const EducationForm: React.FC<Props> = ({ educations, setEducations }) => {
     )
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, field: keyof Education) => {
-        setNewEducation({ ...newEducation, [field]: e.target.value })
+        if (field === 'startDate' || field === 'endDate') {
+            const formattedDate = formatDate(e.target.value);
+            setNewEducation({ ...newEducation, [field]: formattedDate });
+        } else {
+            setNewEducation({ ...newEducation, [field]: e.target.value });
+        }
     }
 
     const handleAddEducation = () => {
@@ -65,30 +76,28 @@ const EducationForm: React.FC<Props> = ({ educations, setEducations }) => {
                 </div>
 
                 <div className='flex justify-between'>
+                    <div>
+                    <label className='ml-3'>Date de début</label>
                     <input
-                        type="text"
+                        type="date"
                         placeholder='Date de début'
                         required
-                        onFocus={(e) => e.target.type = "date"}
-                        onBlur={(e) => {
-                            if (!e.target.value) e.target.type = "text"
-                        }}
-                        value={newEducation.startDate}
+                        value={newEducation.startDate ? newEducation.startDate.split('/').reverse().join('-') : ''}
                         onChange={(e) => handleChange(e, 'startDate')}
                         className='input input-bordered w-full'
                     />
+                    </div>
+                    <div>
+                    <label htmlFor="Date de fin" className='ml-6'>Date de fin</label>
                     <input
-                        type="text"
+                        type="date"
                         placeholder='Date de fin'
                         required
-                        onFocus={(e) => e.target.type = "date"}
-                        onBlur={(e) => {
-                            if (!e.target.value) e.target.type = "text"
-                        }}
-                        value={newEducation.endDate}
+                        value={newEducation.endDate ? newEducation.endDate.split('/').reverse().join('-') : ''}
                         onChange={(e) => handleChange(e, 'endDate')}
                         className='input input-bordered w-full ml-4'
                     />
+                    </div>
                 </div>
                 
                 <textarea
