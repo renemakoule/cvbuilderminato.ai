@@ -1,6 +1,6 @@
 "use client"
 
-import { Eye, RotateCw, Save } from "lucide-react";
+import { Eye, RotateCw, Save } from 'lucide-react';
 import Image from "next/image";
 import PersonalDetailsForm from "../components/PersonalDetailsForm";
 import { useEffect, useRef, useState } from "react";
@@ -30,6 +30,7 @@ export default function Home() {
   const [languages, setLanguages] = useState<Language[]>(languagesPreset)
   const [skills, setSkills] = useState<Skill[]>(skillsPreset)
   const [hobbies, setHobbies] = useState<Hobby[]>(hobbiesPreset);
+  const [isDownloading, setIsDownloading] = useState(false)
 
   useEffect(() => {
     const defaultImageUrl = '/poket.jpg'
@@ -102,6 +103,7 @@ export default function Home() {
     const element = cvPreviewRef.current
     if(element){
       try {
+        setIsDownloading(true)
 
         const canvas = await html2canvas(element , {
           scale : 3,
@@ -135,6 +137,8 @@ export default function Home() {
 
       } catch (error) {
          console.error('Erreur lors de la génération du PDF :', error);
+      } finally {
+        setIsDownloading(false)
       }
     }
   }
@@ -180,7 +184,7 @@ export default function Home() {
               </h1>
               </Link>
 
-              <button className="btn btn-primary text-xs h-10" onClick={() => (document.getElementById('my_modal_3') as HTMLDialogElement).showModal()}>
+              <button className="btn btn-success text-xs h-6" onClick={() => (document.getElementById('my_modal_3') as HTMLDialogElement).showModal()}>
                 Prévisualiser
                 <Eye className="w-4" />
               </button>
@@ -342,9 +346,18 @@ export default function Home() {
 
             <div className="mt-5">
               <div className="flex justify-end mb-5">
-                <button onClick={handleDownloadPdf} className="btn btn-primary">
-                  Télécharger
-                  <Save className='w-4' />
+                <button onClick={handleDownloadPdf} className="btn btn-primary" disabled={isDownloading}>
+                  {isDownloading ? (
+                    <>
+                      Téléchargement du PDF...
+                      <span className="loading loading-spinner loading-sm"></span>
+                    </>
+                  ) : (
+                    <>
+                      Télécharger
+                      <Save className='w-4' />
+                    </>
+                  )}
                 </button>
               </div>
 
@@ -395,3 +408,4 @@ export default function Home() {
     </div>
   );
 }
+
