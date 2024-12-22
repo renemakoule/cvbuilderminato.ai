@@ -135,7 +135,7 @@ export default function FUIHeroSectionWithLogoClouds() {
             </p>
             <div className="items-center gap-x-3 space-y-3 sm:flex sm:space-y-0">
               <Link href='/Cv' target="_blank">
-              <button className="inline-flex h-12 items-center justify-center font-geist rounded-md border border-gray-800 bg-gradient-to-t from-[#8678f9] from-0% to-[#c7d2fe] px-6 font-medium text-gray-950 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-gray-50 ">
+              <button className="inline-flex h-12 btn btn-outline items-center justify-center font-geist rounded-md ">
                 Create Cv
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
