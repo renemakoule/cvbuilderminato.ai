@@ -1,7 +1,10 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 'use client'
 
 import Link from "next/link"
 import { motion } from "framer-motion"
+import React from "react"
+
 
 // Type pour les données de la carte
 interface CardData {
@@ -10,6 +13,30 @@ interface CardData {
   description: string
   link: string
 }
+
+
+React.useEffect(() => {
+    // Ajouter le script Google Analytics
+    const script1 = document.createElement('script');
+    script1.src = "https://www.googletagmanager.com/gtag/js?id=G-BPZC3KD93L";
+    script1.async = true;
+    document.head.appendChild(script1);
+
+    const script2 = document.createElement('script');
+    script2.innerHTML = `
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-BPZC3KD93L');
+    `;
+    document.head.appendChild(script2);
+
+    // Nettoyage
+    return () => {
+      document.head.removeChild(script1);
+      document.head.removeChild(script2);
+    };
+  }, []);
 
 // Données d'exemple
 const cardsData: CardData[] = [
