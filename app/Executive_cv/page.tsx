@@ -289,7 +289,8 @@ export default function Home() {
           <div className="w-2/3 h-full bg-base-100 bg-[url('/file.svg')] bg-cover  bg-center scrollable-preview relative">
 
 
-            <div className="flex items-center justify-center fixed z-[9999] top-5 right-5">
+            <div className="flex items-center justify-center fixed z-[9999] top-5 right-5 space-x-1 text-xs">
+              <label htmlFor="">zoom</label>
               <input
                 type="range"
                 min={30}
@@ -299,11 +300,12 @@ export default function Home() {
                 className="range range-xs range-success " />
               <p className="ml-4 text-xs text-primary">{zoom}%</p>
             </div>
-
+             <div className="fixed z-[9999] top-12 right-5 space-x-1 text-xs">
+              <label htmlFor="">theme color</label>
             <select
               value={theme}
               onChange={(e) => setTheme(e.target.value)}
-              className="select select-bordered fixed z-[9999] select-sm top-12 right-5"
+              className="select select-bordered select-sm"
             >
               {themes.map((themeName) => (
                 <option key={themeName} value={themeName}>
@@ -311,6 +313,7 @@ export default function Home() {
                 </option>
               ))}
             </select>
+            </div>
 
             <div
               className="flex justify-center items-center"

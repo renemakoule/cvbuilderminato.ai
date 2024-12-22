@@ -364,7 +364,7 @@ export default function Home() {
                 </button>
               </div>
 
-              <div className="w-full max-x-full overflow-auto">
+              <div className="w-full h-full max-x-full overflow-auto">
                 <div className="w-full max-w-full flex justify-center items-center">
                   <CVPreviewCorporate
                     personalDetails={personalDetails}

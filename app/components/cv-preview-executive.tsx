@@ -65,8 +65,8 @@ const CVPreviewExecutive: React.FC<Props> = ({ personalDetails, file, theme, exp
       {/* Main Content with Negative Margin */}
       <div className="px-12 -mt-12">
         {/* Header Card */}
-        <div className="bg-white rounded-lg shadow-xl p-8 mb-8">
-          <div className="flex gap-8 items-start">
+        <div className="bg-white rounded-lg shadow-xl p-2 mb-8">
+          <div className="flex gap-4 items-start">
             {file && (
               <div className="w-32 h-32 rounded-lg overflow-hidden shadow-lg flex-shrink-0">
                 <Image
@@ -117,21 +117,21 @@ const CVPreviewExecutive: React.FC<Props> = ({ personalDetails, file, theme, exp
         </div>
 
         {/* Profile Summary */}
-        <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
+        <div className="bg-white rounded-lg shadow-lg p-1 mb-8">
           <h3 className="text-xl font-semibold mb-4">Professional Profile</h3>
           <p className="text-gray-600 leading-relaxed">{personalDetails.description}</p>
         </div>
 
-        <div className="grid grid-cols-3 gap-8">
+        <div className="grid grid-cols-3 gap-2">
           {/* Main Column */}
-          <div className="col-span-2 space-y-8">
+          <div className="col-span-2 space-y-1">
             {/* Experience Section */}
-            <div className="bg-white rounded-lg shadow-lg p-8">
+            <div className="bg-white rounded-lg shadow-lg p-1">
               <h3 className="text-xl font-semibold mb-6 flex items-center gap-2">
                 <BriefcaseBusiness className="w-6 h-6 text-primary" />
                 Professional Experience
               </h3>
-              <div className="space-y-6">
+              <div className="space-y-1">
                 {experiences.map((exp, index) => (
                   <div key={index} className="relative pl-8 pb-6 last:pb-0">
                     <div className="absolute left-0 top-2 w-2 h-2 rounded-full bg-primary" />
@@ -151,12 +151,12 @@ const CVPreviewExecutive: React.FC<Props> = ({ personalDetails, file, theme, exp
             </div>
 
             {/* Education Section */}
-            <div className="bg-white rounded-lg shadow-lg p-8">
+            <div className="bg-white rounded-lg shadow-lg p-1">
               <h3 className="text-xl font-semibold mb-6 flex items-center gap-2">
                 <GraduationCap className="w-6 h-6 text-primary" />
                 Formation
               </h3>
-              <div className="space-y-6">
+              <div className="space-y-1">
                 {educations.map((edu, index) => (
                   <div key={index} className="relative pl-8 pb-6 last:pb-0">
                     <div className="absolute left-0 top-2 w-2 h-2 rounded-full bg-primary" />
@@ -177,9 +177,9 @@ const CVPreviewExecutive: React.FC<Props> = ({ personalDetails, file, theme, exp
           </div>
 
           {/* Sidebar */}
-          <div className="space-y-8">
+          <div className="space-y-2">
             {/* Skills Section */}
-            <div className="bg-white rounded-lg shadow-lg p-8">
+            <div className="bg-white rounded-lg shadow-lg p-1">
               <h3 className="text-xl font-semibold mb-4">Skill</h3>
               <div className="flex flex-wrap gap-2">
                 {skills.map((skill, index) => (
@@ -194,9 +194,9 @@ const CVPreviewExecutive: React.FC<Props> = ({ personalDetails, file, theme, exp
             </div>
 
             {/* Languages Section */}
-            <div className="bg-white rounded-lg shadow-lg p-8">
+            <div className="bg-white rounded-lg shadow-lg p-1">
               <h3 className="text-xl font-semibold mb-4">Language</h3>
-              <div className="space-y-4">
+              <div className="space-y-1">
                 {languages.map((lang, index) => (
                   <div key={index}>
                     <div className="flex justify-between items-center mb-2">
@@ -209,9 +209,9 @@ const CVPreviewExecutive: React.FC<Props> = ({ personalDetails, file, theme, exp
             </div>
 
             {/* Hobbies Section */}
-            <div className="bg-white rounded-lg shadow-lg p-8">
+            <div className="bg-white rounded-lg shadow-lg p-1">
               <h3 className="text-xl font-semibold mb-4">Interests</h3>
-              <div className="space-y-2">
+              <div className="space-y-1">
                 {hobbies.map((hobby, index) => (
                   <p key={index} className="capitalize py-2 px-4 bg-gray-50 rounded-lg">
                     {hobby.name}

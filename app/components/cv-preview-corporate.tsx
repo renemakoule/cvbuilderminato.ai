@@ -65,7 +65,7 @@ const CVPreviewCorporate: React.FC<Props> = ({ personalDetails, file, theme, exp
       {/* Content */}
       <div className="relative grid grid-cols-3">
         {/* Left Column */}
-        <div className="text-white p-8 space-y-8">
+        <div className="text-white p-8 space-y-6 h-full w-full">
           {file && (
             <div className="w-48 h-48 mx-auto rounded-xl overflow-hidden border-4 border-white/20">
               <Image
@@ -115,9 +115,9 @@ const CVPreviewCorporate: React.FC<Props> = ({ personalDetails, file, theme, exp
           </div>
 
           {/* Skills */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4 border-b border-white/20 pb-2">Skill</h3>
-            <div className="flex flex-wrap gap-2">
+          <div className='bg-info rounded-md p-2'>
+            <h3 className="text-lg font-semibold mb-4 border-b border-white/20 pb-2 ml-5">Skill</h3>
+            <div className="flex flex-wrap gap-2 ml-5">
               {skills.map((skill, index) => (
                 <span
                   key={index}
@@ -130,9 +130,9 @@ const CVPreviewCorporate: React.FC<Props> = ({ personalDetails, file, theme, exp
           </div>
 
           {/* Languages */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4 border-b border-white/20 pb-2">Languages</h3>
-            <div className="space-y-4">
+          <div className='bg-info rounded-md p-2'>
+            <h3 className="text-lg font-semibold mb-4 border-b border-white/20 pb-2 ml-5">Languages</h3>
+            <div className="space-y-4 ml-5">
               {languages.map((lang, index) => (
                 <div key={index}>
                   <p className="font-medium mb-2 capitalize">{lang.language}</p>
@@ -143,9 +143,9 @@ const CVPreviewCorporate: React.FC<Props> = ({ personalDetails, file, theme, exp
           </div>
 
           {/* Hobbies */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4 border-b border-white/20 pb-2">Interests</h3>
-            <div className="space-y-2">
+          <div className='bg-info rounded-md p-2'>
+            <h3 className="text-lg font-semibold mb-4 border-b border-white/20 pb-2 ml-5">Interests</h3>
+            <div className="space-y-2 ml-5 ">
               {hobbies.map((hobby, index) => (
                 <p key={index} className="capitalize px-3 py-2 bg-white/10 rounded-lg text-sm">
                   {hobby.name}
@@ -170,7 +170,7 @@ const CVPreviewCorporate: React.FC<Props> = ({ personalDetails, file, theme, exp
               <BriefcaseBusiness className="w-6 h-6 text-primary" />
               Professional Experience
             </h3>
-            <div className="space-y-8">
+            <div className="space-y-4">
               {experiences.map((exp, index) => (
                 <div key={index} className="relative pl-8">
                   <div className="absolute left-0 top-[14px] w-3 h-3 rounded-full border-2 border-primary bg-white" />
@@ -197,7 +197,7 @@ const CVPreviewCorporate: React.FC<Props> = ({ personalDetails, file, theme, exp
               <GraduationCap className="w-6 h-6 text-primary" />
               Formation
             </h3>
-            <div className="space-y-8">
+            <div className="space-y-4">
               {educations.map((edu, index) => (
                 <div key={index} className="relative pl-8">
                   <div className="absolute left-0 top-[14px] w-3 h-3 rounded-full border-2 border-primary bg-white" />
