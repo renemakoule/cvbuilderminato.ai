@@ -20,6 +20,7 @@ import React from "react";
 import AdSystem from "../components/AdSystem";
 import { Toaster } from "react-hot-toast";
 import CVPreviewExecutive from '../components/cv-preview-executive';
+import Toggle from '../components/Toggle';
 
 export default function Home() {
   const [personalDetails, setPersonalDetails] = useState<PersonalDetails>(personalDetailsPreset)
@@ -290,6 +291,7 @@ export default function Home() {
 
 
             <div className="flex items-center justify-center fixed z-[9999] top-5 right-5 space-x-1 text-xs">
+            <Toggle />
               <label htmlFor="">zoom</label>
               <input
                 type="range"

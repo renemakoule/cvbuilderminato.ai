@@ -33,6 +33,7 @@ import Link from "next/link";
 import React from "react";
 import AdSystem from "../components/AdSystem";
 import { Toaster } from "react-hot-toast";
+import Toggle from "../components/Toggle";
 
 export default function Home() {
   const [personalDetails, setPersonalDetails] = useState<PersonalDetails>(
@@ -311,6 +312,7 @@ export default function Home() {
 
           <div className="w-2/3 h-full bg-base-100 bg-[url('/file.svg')] bg-cover  bg-center scrollable-preview relative">
             <div className="flex items-center justify-center fixed z-[9999] top-5 right-5 space-x-1 text-xs">
+            <Toggle />
               <label htmlFor="">zoom</label>
               <input
                 type="range"
