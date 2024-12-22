@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Education, Experience, Hobby, Language, PersonalDetails, Skill } from '@/type';
 import { BriefcaseBusiness, GraduationCap, Mail, MapPinIcon as MapPinCheckInside, Phone, Star } from 'lucide-react'
@@ -59,7 +59,7 @@ const getStarRating = (proficiency: string) => {
 
 const CVPreviewCreative: React.FC<Props> = ({ personalDetails, file, theme, experiences, educations, languages, skills, hobbies, download, ref }) => {
   return (
-    <div ref={ref} className={`w-[950px] h-[1500px] bg-gradient-to-br from-primary/5 to-primary/10 ${download ? 'mb-10' : ''}`} data-theme={theme}>
+    <div ref={ref} className={`w-[950px] h-[1600px] bg-gradient-to-br from-primary/5 to-primary/10 ${download ? 'mb-10' : ''}`} data-theme={theme}>
       {/* Left Sidebar */}
       <div className="w-[300px] h-full bg-primary text-white p-8 fixed">
         {file && (

@@ -55,6 +55,20 @@ const cardsData: CardData[] = [
       "only available on pc or tablet for a good user experience",
     link: "/Professional_cv",
   },
+  {
+    id: 7,
+    title: "Corporate CV",
+    description:
+      "only available on pc or tablet for a good user experience",
+    link: "/Corporate_cv",
+  },
+  {
+    id: 6,
+    title: "Executive CV",
+    description:
+      "only available on pc or tablet for a good user experience",
+    link: "/Executive_cv",
+  },
 ]
 
 export default function CardGrid() {

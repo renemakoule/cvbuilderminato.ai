@@ -58,7 +58,7 @@ const getStarRating = (proficiency: string) => {
 
 const CVPreviewProfessional: React.FC<Props> = ({ personalDetails, file, theme, experiences, educations, languages, skills , hobbies , download , ref}) => {
   return (
-    <div ref={ref} className={`w-[950px] h-[1500px] bg-white ${download ? 'mb-10' : ''}`} data-theme={theme}>
+    <div ref={ref} className={`w-[950px] h-[1600px] bg-white ${download ? 'mb-10' : ''}`} data-theme={theme}>
       {/* Header with Background */}
       <header className="bg-primary text-white px-12 py-8">
         <div className="flex items-center gap-8">

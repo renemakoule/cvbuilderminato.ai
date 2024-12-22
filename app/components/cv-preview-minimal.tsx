@@ -60,7 +60,7 @@ const getStarRating = (proficiency: string) => {
 
 const CVPreviewMinimal: React.FC<Props> = ({ personalDetails, file, theme, experiences, educations, languages, skills, hobbies, download, ref }) => {
   return (
-    <div ref={ref} className={`p-16 w-[950px] h-[1350px] bg-white ${download ? 'mb-10' : ''}`} data-theme={theme}>
+    <div ref={ref} className={`p-16 w-[950px] h-[1600px] bg-white ${download ? 'mb-10' : ''}`} data-theme={theme}>
       {/* Header */}
       <header className="text-center mb-12">
         <h1 className="text-4xl font-light tracking-wide mb-2">{personalDetails.fullName}</h1>

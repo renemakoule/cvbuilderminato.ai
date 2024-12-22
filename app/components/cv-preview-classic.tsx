@@ -58,7 +58,7 @@ const getStarRating = (proficiency: string) => {
 }
 const CVPreviewClassic: React.FC<Props> = ({ personalDetails, file, theme, experiences, educations, languages, skills, hobbies, download, ref }) => {
   return (
-    <div ref={ref} className={`w-[950px] h-[1500px] bg-white border-t-8 border-primary ${download ? 'mb-10' : ''}`} data-theme={theme}>
+    <div ref={ref} className={`w-[950px] h-[1600px] bg-white border-t-8 border-primary ${download ? 'mb-10' : ''}`} data-theme={theme}>
       {/* Header */}
       <header className="px-12 pt-12 pb-8 border-b">
         <div className="flex justify-between items-start">
