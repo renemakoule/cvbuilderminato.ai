@@ -30,9 +30,9 @@ const LanguageForm: React.FC<Props> = ({ languages, setLanguages }) => {
                     proficiency: ''
                 }
             )
-            toast.success('Langue ajoutée avec succès !');
+            toast.success('Language added successfully !');
         } else {
-            toast.error('Veuillez remplir tous les champs avant d\'ajouter une langue.');
+            toast.error('Please fill in all fields before adding a language.');
         }
     }
 
@@ -40,7 +40,7 @@ const LanguageForm: React.FC<Props> = ({ languages, setLanguages }) => {
         <div className='space-y-4 poppins-regular'>
             <input
                 type="text"
-                placeholder="Langue"
+                placeholder="Language"
                 value={newLanguage.language}
                 required
                 onChange={(e) => handleChange(e, 'language')}
@@ -52,17 +52,17 @@ const LanguageForm: React.FC<Props> = ({ languages, setLanguages }) => {
                 onChange={(e) => handleChange(e, 'proficiency')}
                 className='select select-bordered w-full'
             >
-                <option value="">Sélectionner la maîtrise</option>
-                <option value="Débutant">Débutant</option>
-                <option value="Intermédiaire">Intermédiaire</option>
-                <option value="Avancé">Avancé</option>
+                <option value="">Select Mastery</option>
+                <option value="Beginner">Beginner</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Advance">Advance</option>
             </select>
 
             <button
                 onClick={handleAddLanguage}
                 className='btn btn-outline btn-primary btn-xs h-10 mt-4'
             >
-                Ajouter
+                Add
                 <Plus className='w-4' />
             </button>
         </div>

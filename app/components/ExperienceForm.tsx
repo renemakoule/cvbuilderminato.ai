@@ -44,9 +44,9 @@ const ExperienceForm: React.FC<Props> = ({ experience, setExperiences }) => {
                 endDate: '',
                 description: '',
             })
-            toast.success('Expérience ajoutée avec succès !');
+            toast.success('Experience successfully added !');
         } else {
-            toast.error('Veuillez remplir tous les champs avant d\'ajouter une expérience.');
+            toast.error('Please fill in all fields before adding an experience.');
         }
     }
 
@@ -56,7 +56,7 @@ const ExperienceForm: React.FC<Props> = ({ experience, setExperiences }) => {
                 <div className='flex justify-between'>
                     <input
                         type="text"
-                        placeholder='Votre poste'
+                        placeholder='Your Position job'
                         value={newExperience.jobTitle}
                         required
                         onChange={(e) => handleChange(e, 'jobTitle')}
@@ -64,7 +64,7 @@ const ExperienceForm: React.FC<Props> = ({ experience, setExperiences }) => {
                     />
                     <input
                         type="text"
-                        placeholder="Nom de l'entreprise"
+                        placeholder="Company Name"
                         value={newExperience.companyName}
                         required
                         onChange={(e) => handleChange(e, 'companyName')}
@@ -73,46 +73,22 @@ const ExperienceForm: React.FC<Props> = ({ experience, setExperiences }) => {
                 </div>
 
                 <div className='flex justify-between'>
-                    {/* <input
-                        type="text"
-                        placeholder='Date de début'
-                        required
-                        onFocus={(e) => e.target.type = "date"}
-                        onBlur={(e) => {
-                            if (!e.target.value) e.target.type = "text"
-                        }}
-                        value={newExperience.startDate}
-                        onChange={(e) => handleChange(e, 'startDate')}
-                        className='input input-bordered w-full'
-                    /> */}
                     <div>
-                    <label className='ml-3'>Date de début</label>
+                    <label className='ml-3'>Start date</label>
                     <input
                         type="date"
-                        placeholder='Date de début'
+                        placeholder='Start date'
                         required
                         value={newExperience.startDate ? newExperience.startDate.split('/').reverse().join('-') : ''}
                         onChange={(e) => handleChange(e, 'startDate')}
                         className='input input-bordered w-full'
                     />
                     </div>
-                    {/* <input
-                        type="text"
-                        placeholder='Date de fin'
-                        required
-                        onFocus={(e) => e.target.type = "date"}
-                        onBlur={(e) => {
-                            if (!e.target.value) e.target.type = "text"
-                        }}
-                        value={newExperience.endDate}
-                        onChange={(e) => handleChange(e, 'endDate')}
-                        className='input input-bordered w-full ml-4'
-                    /> */}
                     <div>
-                    <label htmlFor="Date de fin" className='ml-6'>Date de fin</label>
+                    <label htmlFor="Date de fin" className='ml-6'>End date</label>
                     <input
                         type="date"
-                        placeholder='Date de fin'
+                        placeholder='End date'
                         required
                         value={newExperience.endDate ? newExperience.endDate.split('/').reverse().join('-') : ''}
                         onChange={(e) => handleChange(e, 'endDate')}
@@ -121,7 +97,7 @@ const ExperienceForm: React.FC<Props> = ({ experience, setExperiences }) => {
                     </div>
                 </div>
                 <textarea
-                    placeholder='Description du poste'
+                    placeholder='Job Description'
                     value={newExperience.description}
                     required
                     onChange={(e) => handleChange(e, 'description')}
@@ -133,7 +109,7 @@ const ExperienceForm: React.FC<Props> = ({ experience, setExperiences }) => {
                 onClick={handleAddExperience}
                 className='btn btn-outline btn-success btn-xs h-10 mt-4'
             >
-                Ajouter
+                Add
                 <Plus className='w-4' />
             </button>
         </div>

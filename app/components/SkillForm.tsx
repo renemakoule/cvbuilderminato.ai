@@ -24,9 +24,9 @@ const SkillForm: React.FC<Props> = ({ skills, setSkills }) => {
     if (newSkill.name.trim() !== '') {
       setSkills([...skills, newSkill]);
       setNewSkill({ name: '' });
-      toast.success('Compétence ajoutée avec succès !');
+      toast.success('Skill added successfully !');
     } else {
-      toast.error('Veuillez entrer une compétence avant d\'ajouter.');
+      toast.error('Please enter a skill before adding.');
     }
   }
 
@@ -35,7 +35,7 @@ const SkillForm: React.FC<Props> = ({ skills, setSkills }) => {
       <div className='mt-4'>
         <input
           type="text"
-          placeholder="Compétence"
+          placeholder="Skill"
           value={newSkill.name}
           required
           onChange={(e) => handleChange(e, 'name')}
@@ -47,7 +47,7 @@ const SkillForm: React.FC<Props> = ({ skills, setSkills }) => {
         onClick={handleAddSkill}
         className='btn btn-outline btn-primary btn-xs h-10 mt-4'
       >
-        Ajouter
+        Add
         <Plus className='w-4' />
       </button>
     </div>

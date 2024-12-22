@@ -47,9 +47,9 @@ const EducationForm: React.FC<Props> = ({ educations, setEducations }) => {
                     description: '',
                 }
             )
-            toast.success('Formation ajoutée avec succès !');
+            toast.success('Training successfully added !');
         } else {
-            toast.error('Veuillez remplir tous les champs avant d\'ajouter une formation.');
+            toast.error('Please fill in all fields before adding a training.');
         }
     }
 
@@ -59,7 +59,7 @@ const EducationForm: React.FC<Props> = ({ educations, setEducations }) => {
                 <div className='flex justify-between'>
                     <input
                         type="text"
-                        placeholder="Nom de l'école"
+                        placeholder="Name of school"
                         value={newEducation.school}
                         required
                         onChange={(e) => handleChange(e, 'school')}
@@ -67,7 +67,7 @@ const EducationForm: React.FC<Props> = ({ educations, setEducations }) => {
                     />
                     <input
                         type="text"
-                        placeholder="Diplôme"
+                        placeholder="Diploma"
                         value={newEducation.degree}
                         required
                         onChange={(e) => handleChange(e, 'degree')}
@@ -77,10 +77,10 @@ const EducationForm: React.FC<Props> = ({ educations, setEducations }) => {
 
                 <div className='flex justify-between'>
                     <div>
-                    <label className='ml-3'>Date de début</label>
+                    <label className='ml-3'>Start date</label>
                     <input
                         type="date"
-                        placeholder='Date de début'
+                        placeholder='Start date'
                         required
                         value={newEducation.startDate ? newEducation.startDate.split('/').reverse().join('-') : ''}
                         onChange={(e) => handleChange(e, 'startDate')}
@@ -88,10 +88,10 @@ const EducationForm: React.FC<Props> = ({ educations, setEducations }) => {
                     />
                     </div>
                     <div>
-                    <label htmlFor="Date de fin" className='ml-6'>Date de fin</label>
+                    <label htmlFor="Date de fin" className='ml-6'>End date</label>
                     <input
                         type="date"
-                        placeholder='Date de fin'
+                        placeholder='End date'
                         required
                         value={newEducation.endDate ? newEducation.endDate.split('/').reverse().join('-') : ''}
                         onChange={(e) => handleChange(e, 'endDate')}
@@ -113,7 +113,7 @@ const EducationForm: React.FC<Props> = ({ educations, setEducations }) => {
                 onClick={handleAddEducation}
                 className='btn btn-outline btn-primary btn-xs h-10 mt-4'
             >
-                Ajouter
+                Add
                 <Plus className='w-4' />
             </button>
 

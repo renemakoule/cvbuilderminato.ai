@@ -23,9 +23,9 @@ const HobbyForm: React.FC<Props> = ({ hobbies, setHobbies }) => {
     if (newHobby.name.trim() !== '') {
       setHobbies([...hobbies, newHobby]);
       setNewHobby({ name: '' });
-      toast.success('Hobby ajouté avec succès !');
+      toast.success('Hobby added successfully !');
     } else {
-      toast.error('Veuillez entrer un hobby avant d\'ajouter.');
+      toast.error('Please enter a hobby before adding.');
     }
   }
 
@@ -43,7 +43,7 @@ const HobbyForm: React.FC<Props> = ({ hobbies, setHobbies }) => {
         onClick={handleAddHobby}
         className='btn btn-outline btn-primary btn-xs h-10 mt-4'
       >
-        Ajouter
+        Add
         <Plus className='w-4' />
       </button>
     </div>

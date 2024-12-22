@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+
 "use client"
 
 import { Eye, RotateCw, Save } from 'lucide-react';
@@ -137,7 +137,7 @@ export default function Home() {
         })
 
       } catch (error) {
-         console.error('Erreur lors de la génération du PDF :', error);
+         console.error('Error generating PDF :', error);
       } finally {
         setIsDownloading(false)
       }
@@ -186,7 +186,7 @@ export default function Home() {
               </Link>
 
               <button className="btn btn-success btn-outline btn-xs text-xs h-10" onClick={() => (document.getElementById('my_modal_3') as HTMLDialogElement).showModal()}>
-                Prévisualiser
+              Preview
                 <Eye className="w-4" />
               </button>
             </div>
@@ -194,7 +194,7 @@ export default function Home() {
             <div className="flex  flex-col gap-6 rounded-lg">
 
               <div className="flex justify-between items-center">
-                <h1 className="badge badge-primary badge-outline">Qui êtes-vous ?</h1>
+                <h1 className="badge badge-primary badge-outline">Who are you ? ?</h1>
                 <button
                   onClick={handleResetPersonalDetails}
                   className="btn btn-outline btn-success btn-xs h-8">
@@ -209,7 +209,7 @@ export default function Home() {
               />
 
               <div className="flex justify-between items-center">
-                <h1 className="badge badge-primary badge-outline">Expériences</h1>
+                <h1 className="badge badge-primary badge-outline">Experiences</h1>
                 <button
                   onClick={handleResetExperiences}
                   className="btn btn-outline btn-success btn-xs h-8">
@@ -224,7 +224,7 @@ export default function Home() {
 
 
               <div className="flex justify-between items-center">
-                <h1 className="badge badge-primary badge-outline">Éducations</h1>
+                <h1 className="badge badge-primary badge-outline">Educations</h1>
                 <button
                   onClick={handleResetEducations}
                   className="btn btn-outline btn-primary btn-xs h-8">
@@ -238,7 +238,7 @@ export default function Home() {
               />
 
               <div className="flex justify-between items-center">
-                <h1 className="badge badge-primary badge-outline">Langues</h1>
+                <h1 className="badge badge-primary badge-outline">Languages</h1>
                 <button
                   onClick={handleResetLanguages}
                   className="btn btn-outline btn-primary btn-xs h-8">
@@ -255,7 +255,7 @@ export default function Home() {
 
                 <div className="w-1/2">
                   <div className="flex justify-between items-center">
-                    <h1 className="badge badge-primary badge-outline">Compétences</h1>
+                    <h1 className="badge badge-primary badge-outline">SKILLS</h1>
                     <button
                       onClick={handleResetSkills}
                       className="btn btn-outline btn-primary btn-xs h-8">
@@ -267,7 +267,7 @@ export default function Home() {
 
                 <div className="ml-4 w-1/2">
                   <div className="flex justify-between items-center">
-                    <h1 className="badge badge-primary badge-outline">Loisirs</h1>
+                    <h1 className="badge badge-primary badge-outline">Hobbies</h1>
                     <button
                       onClick={handleResetHobbies}
                       className="btn btn-outline btn-primary btn-xs h-8">
@@ -350,14 +350,14 @@ export default function Home() {
                 <button onClick={handleDownloadPdf} className="btn btn-primary" disabled={isDownloading}>
                   {isDownloading ? (
                     <>
-                      Téléchargement du PDF
+                      PDF Download
                       <span className="loading loading-ring loading-xs"></span>
                       <span className="loading loading-ring loading-xs"></span>
                       <span className="loading loading-ring loading-xs"></span>
                     </>
                   ) : (
                     <>
-                      Télécharger
+                      Download
                       <Save className='w-4' />
                     </>
                   )}
@@ -392,7 +392,7 @@ export default function Home() {
         <div className="hero bg-base-200 min-h-screen">
           <div className="hero-content text-center">
             <div className="max-w-md">
-              <h1 className="text-3xl font-bold">Désolé, le CV Builder Mak est uniquement accessible sur tablette ou ordinateur.</h1>
+              <h1 className="text-3xl font-bold">Sorry, CV Builder Mak is only accessible on tablet or computer.</h1>
               <Image
                 src="/sad-sorry.gif"
                 width={500}
@@ -401,7 +401,7 @@ export default function Home() {
                 className="mx-auto my-6"
               />
               <p className="py-6">
-                Pour créer et personnaliser votre CV, veuillez utiliser un ordinateur ou une tablette. Nous vous remercions de votre compréhension.
+              To create and customize your CV, please use a computer or tablet. Thank you for your understanding..
               </p>
             </div>
           </div>

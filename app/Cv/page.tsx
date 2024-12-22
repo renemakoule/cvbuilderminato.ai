@@ -127,7 +127,7 @@ export default function CardGrid() {
               scale: 1.02,
               transition: { duration: 0.2 }
             }}
-            className="card bg-base-100 w-96 shadow-xl cursor-pointer"
+            className="card bg-base-100 w-full shadow-xl cursor-pointer"
           >
             <div className="card-body">
               <h2 className="card-title">{card.title}</h2>
