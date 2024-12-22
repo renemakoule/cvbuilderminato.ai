@@ -31,7 +31,7 @@ const SkillForm: React.FC<Props> = ({ skills, setSkills }) => {
   }
 
   return (
-    <div>
+    <div className='poppins-regular'>
       <div className='mt-4'>
         <input
           type="text"

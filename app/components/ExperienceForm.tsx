@@ -51,7 +51,7 @@ const ExperienceForm: React.FC<Props> = ({ experience, setExperiences }) => {
     }
 
     return (
-        <div>
+        <div className='poppins-regular'>
             <div className='flex flex-col gap-4'>
                 <div className='flex justify-between'>
                     <input

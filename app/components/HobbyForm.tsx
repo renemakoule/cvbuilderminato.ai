@@ -30,7 +30,7 @@ const HobbyForm: React.FC<Props> = ({ hobbies, setHobbies }) => {
   }
 
   return (
-    <div>
+    <div className='poppins-regular'>
       <input 
         type="text"
         placeholder="Hobby"

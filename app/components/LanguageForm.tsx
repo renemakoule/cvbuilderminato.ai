@@ -37,7 +37,7 @@ const LanguageForm: React.FC<Props> = ({ languages, setLanguages }) => {
     }
 
     return (
-        <div className='space-y-4'>
+        <div className='space-y-4 poppins-regular'>
             <input
                 type="text"
                 placeholder="Langue"

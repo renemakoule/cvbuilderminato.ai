@@ -41,7 +41,7 @@ export default function FUIHeroSectionWithLogoClouds() {
   }, []);
 
   return (
-    <div className="relative w-full flex flex-col bg-black">
+    <div className="relative w-full flex flex-col bg-black poppins-regular">
       <Image
         className="absolute top-0 z-0 -translate-y-1/2"
         src={"/bg-back.png"}

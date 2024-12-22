@@ -21,7 +21,7 @@ const PersonalDetailsForm: React.FC<Props> = ({ personalDetails, setPersonalDeta
   }
 
   return (
-    <div className='flex flex-col gap-4'>
+    <div className='flex flex-col gap-4 poppins-regular'>
       <input
         type="text"
         placeholder='Nom complet'
