@@ -17,42 +17,42 @@ const cardsData: CardData[] = [
     id: 1,
     title: "Classic CV",
     description:
-      "Create your CV in a dynamic and fluid way: a modern design, a clear structure, and intuitive tools to easily stand out!",
+      "only available on pc or tablet for a good user experience",
     link: "/Classic",
   },
   {
     id: 2,
     title: "Standard CV",
     description:
-      "Create your CV in a dynamic and fluid way: a modern design, a clear structure, and intuitive tools to easily stand out!",
+      "only available on pc or tablet for a good user experience",
     link: "/Standard",
   },
   {
     id: 3,
     title: "Creative CV",
     description:
-      "Create your CV in a dynamic and fluid way: a modern design, a clear structure, and intuitive tools to easily stand out!",
+      "only available on pc or tablet for a good user experience",
     link: "/Creative_cv",
   },
   {
     id: 4,
     title: "Minimal CV",
     description:
-      "Create your CV in a dynamic and fluid way: a modern design, a clear structure, and intuitive tools to easily stand out!",
+      "only available on pc or tablet for a good user experience",
     link: "/Minimal_cv",
   },
   {
     id: 5,
     title: "Modern CV",
     description:
-      "Create your CV in a dynamic and fluid way: a modern design, a clear structure, and intuitive tools to easily stand out!",
+      "only available on pc or tablet for a good user experience",
     link: "/Modern_cv",
   },
   {
     id: 6,
     title: "Professional CV",
     description:
-      "Create your CV in a dynamic and fluid way: a modern design, a clear structure, and intuitive tools to easily stand out!",
+      "only available on pc or tablet for a good user experience",
     link: "/Professional_cv",
   },
 ]
