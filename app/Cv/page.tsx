@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { useEffect } from "react"
+import Script from "next/script"
 
 // Type pour les données de la carte
 interface CardData {
@@ -75,28 +75,19 @@ const cardsData: CardData[] = [
 
 export default function CardGrid() {
 
-  useEffect(() => {
-    // Ajouter le script Google Analytics
-    const script1 = document.createElement('script');
-    script1.src = "https://www.googletagmanager.com/gtag/js?id=G-BPZC3KD93L";
-    script1.async = true;
-    document.head.appendChild(script1);
-
-    const script2 = document.createElement('script');
-    script2.innerHTML = `
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-BPZC3KD93L');
-    `;
-    document.head.appendChild(script2);
-
-    // Nettoyage
-    return () => {
-      document.head.removeChild(script1);
-      document.head.removeChild(script2);
-    };
-  }, []);
+  <><Script
+    src="https://www.googletagmanager.com/gtag/js?id=G-BPZC3KD93L"
+    strategy="afterInteractive" /><Script
+      id="google-analytics"
+      strategy="afterInteractive"
+    >
+      {`
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BPZC3KD93L');
+  `}
+    </Script></>
 
   return (
     <section className="container mx-auto px-4 py-8 poppins-regular bg-primary/50 shadow-lg rounded-lg mt-5">

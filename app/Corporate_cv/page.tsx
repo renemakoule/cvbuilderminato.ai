@@ -34,6 +34,7 @@ import AdSystem from "../components/AdSystem";
 import { Toaster } from "react-hot-toast";
 import CVPreviewCorporate from "../components/cv-preview-corporate";
 import Toggle from "../components/Toggle";
+import Script from "next/script";
 
 export default function Home() {
   const [personalDetails, setPersonalDetails] = useState<PersonalDetails>(
@@ -160,28 +161,19 @@ export default function Home() {
     }
   };
 
-  React.useEffect(() => {
-    // Ajouter le script Google Analytics
-    const script1 = document.createElement("script");
-    script1.src = "https://www.googletagmanager.com/gtag/js?id=G-BPZC3KD93L";
-    script1.async = true;
-    document.head.appendChild(script1);
-
-    const script2 = document.createElement("script");
-    script2.innerHTML = `
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-BPZC3KD93L');
-    `;
-    document.head.appendChild(script2);
-
-    // Nettoyage
-    return () => {
-      document.head.removeChild(script1);
-      document.head.removeChild(script2);
-    };
-  }, []);
+  <><Script
+    src="https://www.googletagmanager.com/gtag/js?id=G-BPZC3KD93L"
+    strategy="afterInteractive" /><Script
+      id="google-analytics"
+      strategy="afterInteractive"
+    >
+      {`
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BPZC3KD93L');
+  `}
+    </Script></>
 
   return (
     <div className="poppins-regular">

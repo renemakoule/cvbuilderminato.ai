@@ -1,5 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
-/* eslint-disable @typescript-eslint/no-unused-vars */
+
 'use client'
 
 import React from "react";
@@ -8,9 +7,11 @@ import { ChevronRight } from 'lucide-react';
 import Link from "next/link";
 import LogoMinato from "./components/logoMinato";
 import AdSystem from './components/AdSystem'
+import Toggle from "./components/Toggle";
+import Script from "next/script";
 
 export default function FUIHeroSectionWithLogoClouds() {
-  const [state, setState] = React.useState(false);
+  const [state, ] = React.useState(false);
 
   // Replace javascript:void(0) path with your path
   const navigation = [
@@ -18,28 +19,19 @@ export default function FUIHeroSectionWithLogoClouds() {
     { title: "Search your products", path: "https://minato-ai.vercel.app/" },
   ];
 
-  React.useEffect(() => {
-    // Ajouter le script Google Analytics
-    const script1 = document.createElement('script');
-    script1.src = "https://www.googletagmanager.com/gtag/js?id=G-BPZC3KD93L";
-    script1.async = true;
-    document.head.appendChild(script1);
-
-    const script2 = document.createElement('script');
-    script2.innerHTML = `
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-BPZC3KD93L');
-    `;
-    document.head.appendChild(script2);
-
-    // Nettoyage
-    return () => {
-      document.head.removeChild(script1);
-      document.head.removeChild(script2);
-    };
-  }, []);
+  <><Script
+    src="https://www.googletagmanager.com/gtag/js?id=G-BPZC3KD93L"
+    strategy="afterInteractive" /><Script
+      id="google-analytics"
+      strategy="afterInteractive"
+    >
+      {`
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BPZC3KD93L');
+  `}
+    </Script></>
 
   return (
     <div className="relative w-full flex flex-col bg-black poppins-regular">
@@ -106,6 +98,7 @@ export default function FUIHeroSectionWithLogoClouds() {
               </li>
             ))}
           </div>
+          <Toggle />
           {/* <Link href='/Cv' target="_blank">
           <li className="order-2 py-5 md:py-0">
             <button className="inline-flex h-12 items-center justify-center font-geist rounded-md border border-gray-800 bg-gradient-to-t from-[#8678f9] from-0% to-[#c7d2fe] px-6 font-medium text-gray-950 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-gray-50 ">
@@ -154,6 +147,7 @@ export default function FUIHeroSectionWithLogoClouds() {
             </div>
           </div>
           <div className="flex-none mt-14 md:mt-0 md:max-w-xl">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="https://images.unsplash.com/photo-1573164713619-24c711fe7878?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1738&q=80"
               className=" md:rounded-tl-[108px]"
