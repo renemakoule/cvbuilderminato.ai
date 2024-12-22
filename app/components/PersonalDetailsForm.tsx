@@ -24,8 +24,7 @@ const PersonalDetailsForm: React.FC<Props> = ({ personalDetails, setPersonalDeta
     <div className='flex flex-col gap-4 poppins-regular'>
       <input
         type="text"
-        placeholder='Nom complet'
-        value={personalDetails.fullName}
+        placeholder='Rene Boris Makoule'
         required
         onChange={(e) => handleChange(e, 'fullName')}
         className='input input-bordered w-full'
@@ -33,16 +32,14 @@ const PersonalDetailsForm: React.FC<Props> = ({ personalDetails, setPersonalDeta
       <div className='flex'>
         <input
           type="email"
-          placeholder='Email'
-          value={personalDetails.email}
+          placeholder='renemakoule@gmail.com'
           required
           onChange={(e) => handleChange(e, 'email')}
           className='input input-bordered w-full'
         />
         <input
-          type="phone"
-          placeholder='Numéro de téléphone'
-          value={personalDetails.phone}
+          type="number"
+          placeholder='+237 651727932'
           required
           onChange={(e) => handleChange(e, 'phone')}
           className='input input-bordered w-full ml-4'
@@ -51,8 +48,7 @@ const PersonalDetailsForm: React.FC<Props> = ({ personalDetails, setPersonalDeta
 
       <input
         type="text"
-        placeholder='Addresse'
-        value={personalDetails.address}
+        placeholder='Douala, Cameroon, Pk10'
         required
         onChange={(e) => handleChange(e, 'address')}
         className='input input-bordered w-full'
@@ -68,16 +64,14 @@ const PersonalDetailsForm: React.FC<Props> = ({ personalDetails, setPersonalDeta
 
       <input
         type="text"
-        placeholder='Post Recherché'
-        value={personalDetails.postSeeking}
+        placeholder='System Administrator'
         required
         onChange={(e) => handleChange(e, 'postSeeking')}
         className='input input-bordered w-full'
       />
 
       <textarea
-        placeholder='Description de la personne'
-        value={personalDetails.description}
+        placeholder='Dynamic – Committed – Versatile – Hardworking – Open-minded – Sociable – Multicultural – Team spirit – Good morality – Optimal time management – ​​Ease of adaptation and learning'
         required
         onChange={(e) => handleChange(e, 'description')}
         className='input input-bordered w-full h-36'
