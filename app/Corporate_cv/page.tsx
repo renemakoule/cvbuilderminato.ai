@@ -1,6 +1,6 @@
 "use client";
 
-import { Eye, RotateCw, Save } from "lucide-react";
+import { Eye, RotateCw, Save } from 'lucide-react';
 import Image from "next/image";
 import PersonalDetailsForm from "../components/PersonalDetailsForm";
 import { useEffect, useRef, useState } from "react";
@@ -20,6 +20,7 @@ import {
   personalDetailsPreset,
   skillsPreset,
 } from "@/presets";
+
 import ExperienceForm from "../components/ExperienceForm";
 import EducationForm from "../components/EducationForm";
 import LanguageForm from "../components/LanguageForm";
@@ -35,7 +36,6 @@ import { Toaster } from "react-hot-toast";
 import CVPreviewCorporate from "../components/cv-preview-corporate";
 import Toggle from "../components/Toggle";
 import Script from "next/script";
-
 export default function Home() {
   const [personalDetails, setPersonalDetails] = useState<PersonalDetails>(
     personalDetailsPreset
@@ -50,16 +50,29 @@ export default function Home() {
   const [skills, setSkills] = useState<Skill[]>(skillsPreset);
   const [hobbies, setHobbies] = useState<Hobby[]>(hobbiesPreset);
   const [isDownloading, setIsDownloading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const defaultImageUrl = "/poket.jpg";
-    fetch(defaultImageUrl)
-      .then((res) => res.blob())
-      .then((blob) => {
-        const defaultFile = new File([blob], "poket.jpg", { type: blob.type });
+    setIsLoading(true);
+    
+    // Add 5 second delay before fetching and showing content
+    const timer = setTimeout(() => {
+      fetch(defaultImageUrl)
+        .then((res) => res.blob())
+        .then((blob) => {
+          const defaultFile = new File([blob], "poket.jpg", { type: blob.type });
+          setFile(defaultFile);
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          console.error("Error loading default image:", error);
+          setIsLoading(false);
+        });
+    }, 3000);
 
-        setFile(defaultFile);
-      });
+    // Cleanup timer on unmount
+    return () => clearTimeout(timer);
   }, []);
 
   const themes = [
@@ -179,231 +192,240 @@ export default function Home() {
     <div className="poppins-regular">
       <Toaster />
       <div className="hidden lg:block">
-        <section className="flex items-center h-screen">
-          <div className="w-1/3 h-full p-10 bg-base-200 scrollable no-scrollbar ">
-            <div className="mb-4 flex justify-between items-center w-full">
-              <Link href="/Cv" target="_blank">
-                <h1 className="text-xl font-bold italic">
-                  CV
-                  <span className="text-primary">Builder</span>
-                  <span className="text-success">Makoule</span>
-                </h1>
-              </Link>
+        {isLoading ? (
+          <div className=" w-full flex items-center justify-center">
+          <div className="flex w-full flex-col gap-4">
+            <div className="skeleton h-32 w-full"></div>
+            <div className="skeleton h-4 w-full"></div>
+            <div className="skeleton h-4 w-full"></div>
+            <div className="skeleton h-4 w-full"></div>
+          </div>
+        </div>
+        ) : (
+          <section className="flex items-center h-screen">
+            <div className="w-1/3 h-full p-10 bg-base-200 scrollable no-scrollbar ">
+              <div className="mb-4 flex justify-between items-center w-full">
+                <Link href="/Cv" target="_blank">
+                  <h1 className="text-xl font-bold italic">
+                    CV
+                    <span className="text-primary">Builder</span>
+                    <span className="text-success">Makoule</span>
+                  </h1>
+                </Link>
 
-              <button
-                className="btn btn-success btn-outline btn-xs text-xs h-10"
-                onClick={() =>
-                  (
-                    document.getElementById("my_modal_3") as HTMLDialogElement
-                  ).showModal()
-                }
-              >
-                Preview
-                <Eye className="w-4" />
-              </button>
-            </div>
-
-            <div className="flex  flex-col gap-6 rounded-lg">
-              <div className="flex justify-between items-center">
-                <h1 className="badge badge-primary badge-outline">
-                  Who are you ? ?
-                </h1>
                 <button
-                  onClick={handleResetPersonalDetails}
-                  className="btn btn-outline btn-success btn-xs h-8"
+                  className="btn btn-success btn-outline btn-xs text-xs h-10"
+                  onClick={() =>
+                    (
+                      document.getElementById("my_modal_3") as HTMLDialogElement
+                    ).showModal()
+                  }
                 >
-                  <RotateCw className="w-4" />
+                  Preview
+                  <Eye className="w-4" />
                 </button>
               </div>
 
-              <PersonalDetailsForm
-                personalDetails={personalDetails}
-                setPersonalDetails={setPersonalDetails}
-                setFile={setFile}
-              />
+              <div className="flex  flex-col gap-6 rounded-lg">
+                <div className="flex justify-between items-center">
+                  <h1 className="badge badge-primary badge-outline">
+                    Who are you ? ?
+                  </h1>
+                  <button
+                    onClick={handleResetPersonalDetails}
+                    className="btn btn-outline btn-success btn-xs h-8"
+                  >
+                    <RotateCw className="w-4" />
+                  </button>
+                </div>
 
-              <div className="flex justify-between items-center">
-                <h1 className="badge badge-primary badge-outline">
-                  Experiences
-                </h1>
-                <button
-                  onClick={handleResetExperiences}
-                  className="btn btn-outline btn-success btn-xs h-8"
-                >
-                  <RotateCw className="w-4" />
-                </button>
-              </div>
+                <PersonalDetailsForm
+                  personalDetails={personalDetails}
+                  setPersonalDetails={setPersonalDetails}
+                  setFile={setFile}
+                />
 
-              <ExperienceForm
-                experience={experiences}
-                setExperiences={setExperience}
-              />
+                <div className="flex justify-between items-center">
+                  <h1 className="badge badge-primary badge-outline">
+                    Experiences
+                  </h1>
+                  <button
+                    onClick={handleResetExperiences}
+                    className="btn btn-outline btn-success btn-xs h-8"
+                  >
+                    <RotateCw className="w-4" />
+                  </button>
+                </div>
 
-              <div className="flex justify-between items-center">
-                <h1 className="badge badge-primary badge-outline">
-                  Educations
-                </h1>
-                <button
-                  onClick={handleResetEducations}
-                  className="btn btn-outline btn-primary btn-xs h-8"
-                >
-                  <RotateCw className="w-4" />
-                </button>
-              </div>
+                <ExperienceForm
+                  experience={experiences}
+                  setExperiences={setExperience}
+                />
 
-              <EducationForm
-                educations={educations}
-                setEducations={setEducations}
-              />
+                <div className="flex justify-between items-center">
+                  <h1 className="badge badge-primary badge-outline">
+                    Educations
+                  </h1>
+                  <button
+                    onClick={handleResetEducations}
+                    className="btn btn-outline btn-primary btn-xs h-8"
+                  >
+                    <RotateCw className="w-4" />
+                  </button>
+                </div>
 
-              <div className="flex justify-between items-center">
-                <h1 className="badge badge-primary badge-outline">Languages</h1>
-                <button
-                  onClick={handleResetLanguages}
-                  className="btn btn-outline btn-primary btn-xs h-8"
-                >
-                  <RotateCw className="w-4" />
-                </button>
-              </div>
+                <EducationForm
+                  educations={educations}
+                  setEducations={setEducations}
+                />
 
-              <LanguageForm languages={languages} setLanguages={setLanguages} />
+                <div className="flex justify-between items-center">
+                  <h1 className="badge badge-primary badge-outline">Languages</h1>
+                  <button
+                    onClick={handleResetLanguages}
+                    className="btn btn-outline btn-primary btn-xs h-8"
+                  >
+                    <RotateCw className="w-4" />
+                  </button>
+                </div>
 
-              <div className="flex justify-between">
-                <div className="w-1/2">
-                  <div className="flex justify-between items-center">
-                    <h1 className="badge badge-primary badge-outline">
-                      SKILLS
-                    </h1>
-                    <button
-                      onClick={handleResetSkills}
-                      className="btn btn-outline btn-primary btn-xs h-8"
-                    >
-                      <RotateCw className="w-4" />
-                    </button>
+                <LanguageForm languages={languages} setLanguages={setLanguages} />
+
+                <div className="flex justify-between">
+                  <div className="w-1/2">
+                    <div className="flex justify-between items-center">
+                      <h1 className="badge badge-primary badge-outline">
+                        SKILLS
+                      </h1>
+                      <button
+                        onClick={handleResetSkills}
+                        className="btn btn-outline btn-primary btn-xs h-8"
+                      >
+                        <RotateCw className="w-4" />
+                      </button>
+                    </div>
+                    <SkillForm skills={skills} setSkills={setSkills} />
                   </div>
-                  <SkillForm skills={skills} setSkills={setSkills} />
-                </div>
 
-                <div className="ml-4 w-1/2">
-                  <div className="flex justify-between items-center">
-                    <h1 className="badge badge-primary badge-outline">
-                      Hobbies
-                    </h1>
-                    <button
-                      onClick={handleResetHobbies}
-                      className="btn btn-outline btn-primary btn-xs h-8"
-                    >
-                      <RotateCw className="w-4" />
-                    </button>
+                  <div className="ml-4 w-1/2">
+                    <div className="flex justify-between items-center">
+                      <h1 className="badge badge-primary badge-outline">
+                        Hobbies
+                      </h1>
+                      <button
+                        onClick={handleResetHobbies}
+                        className="btn btn-outline btn-primary btn-xs h-8"
+                      >
+                        <RotateCw className="w-4" />
+                      </button>
+                    </div>
+                    <HobbyForm hobbies={hobbies} setHobbies={setHobbies} />
                   </div>
-                  <HobbyForm hobbies={hobbies} setHobbies={setHobbies} />
                 </div>
               </div>
             </div>
-          </div>
 
-          <div className="w-2/3 h-full bg-base-100 bg-[url('/file.svg')] bg-cover  bg-center scrollable-preview relative">
-            <div className="flex items-center justify-center fixed z-[9999] top-5 right-5 space-x-1 text-xs">
-            <Toggle />
-              <label htmlFor="">zoom</label>
-              <input
-                type="range"
-                min={30}
-                max={250}
-                value={zoom}
-                onChange={(e) => setZoom(Number(e.target.value))}
-                className="range range-xs range-success "
-              />
-              <p className="ml-4 text-xs text-primary">{zoom}%</p>
-            </div>
-            <div className="fixed z-[9999] top-12 right-5 space-x-1 text-xs">
-              <label htmlFor="">theme color</label>
-              <select
-                value={theme}
-                onChange={(e) => setTheme(e.target.value)}
-                className="select select-bordered select-sm"
-              >
-                {themes.map((themeName) => (
-                  <option key={themeName} value={themeName}>
-                    {themeName}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <div
-              className="flex justify-center items-center"
-              style={{
-                transform: `scale(${zoom / 200})`,
-              }}
-            >
-              <CVPreviewCorporate
-                personalDetails={personalDetails}
-                file={file}
-                theme={theme}
-                experiences={experiences}
-                educations={educations}
-                languages={languages}
-                hobbies={hobbies}
-                skills={skills}
-              />
-            </div>
-          </div>
-        </section>
-
-        <dialog id="my_modal_3" className="modal">
-          <div className="modal-box w-full max-w-6xl mx-auto px-4 sm;px-6 lg:px-8">
-            <form method="dialog">
-              {/* if there is a button in form, it will close the modal */}
-              <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
-                ✕
-              </button>
-            </form>
-
-            <div className="mt-5">
-              <div className="flex justify-end mb-5">
-                <button
-                  onClick={handleDownloadPdf}
-                  className="btn btn-primary"
-                  disabled={isDownloading}
+            <div className="w-2/3 h-full bg-base-100 bg-[url('/file.svg')] bg-cover  bg-center scrollable-preview relative">
+              <div className="flex items-center justify-center fixed z-[9999] top-5 right-5 space-x-1 text-xs">
+                <Toggle />
+                <label htmlFor="">zoom</label>
+                <input
+                  type="range"
+                  min={30}
+                  max={250}
+                  value={zoom}
+                  onChange={(e) => setZoom(Number(e.target.value))}
+                  className="range range-xs range-success "
+                />
+                <p className="ml-4 text-xs text-primary">{zoom}%</p>
+              </div>
+              <div className="fixed z-[9999] top-12 right-5 space-x-1 text-xs">
+                <label htmlFor="">theme color</label>
+                <select
+                  value={theme}
+                  onChange={(e) => setTheme(e.target.value)}
+                  className="select select-bordered select-sm"
                 >
-                  {isDownloading ? (
-                    <>
-                      PDF Download
-                      <span className="loading loading-ring loading-xs"></span>
-                      <span className="loading loading-ring loading-xs"></span>
-                      <span className="loading loading-ring loading-xs"></span>
-                    </>
-                  ) : (
-                    <>
-                      Download
-                      <Save className="w-4" />
-                    </>
-                  )}
-                </button>
+                  {themes.map((themeName) => (
+                    <option key={themeName} value={themeName}>
+                      {themeName}
+                    </option>
+                  ))}
+                </select>
               </div>
 
-              <div className="w-full h-full max-x-full overflow-auto">
-                <div className="w-full max-w-full flex justify-center items-center">
-                  <CVPreviewCorporate
-                    personalDetails={personalDetails}
-                    file={file}
-                    theme={theme}
-                    experiences={experiences}
-                    educations={educations}
-                    languages={languages}
-                    hobbies={hobbies}
-                    skills={skills}
-                    download={true}
-                    ref={cvPreviewRef}
-                  />
-                </div>
+              <div
+                className="flex justify-center items-center"
+                style={{
+                  transform: `scale(${zoom / 200})`,
+                }}
+              >
+                <CVPreviewCorporate
+                  personalDetails={personalDetails}
+                  file={file}
+                  theme={theme}
+                  experiences={experiences}
+                  educations={educations}
+                  languages={languages}
+                  hobbies={hobbies}
+                  skills={skills}
+                />
               </div>
             </div>
-          </div>
-        </dialog>
+          </section>
+        )}
       </div>
 
+      <dialog id="my_modal_3" className="modal">
+        <div className="modal-box w-full max-w-6xl mx-auto px-4 sm;px-6 lg:px-8">
+          <form method="dialog">
+            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+              ✕
+            </button>
+          </form>
+
+          <div className="mt-5">
+            <div className="flex justify-end mb-5">
+              <button
+                onClick={handleDownloadPdf}
+                className="btn btn-primary"
+                disabled={isDownloading}
+              >
+                {isDownloading ? (
+                  <>
+                    PDF Download
+                    <span className="loading loading-ring loading-xs"></span>
+                    <span className="loading loading-ring loading-xs"></span>
+                    <span className="loading loading-ring loading-xs"></span>
+                  </>
+                ) : (
+                  <>
+                    Download
+                    <Save className="w-4" />
+                  </>
+                )}
+              </button>
+            </div>
+
+            <div className="w-full h-full max-x-full overflow-auto">
+              <div className="w-full max-w-full flex justify-center items-center">
+                <CVPreviewCorporate
+                  personalDetails={personalDetails}
+                  file={file}
+                  theme={theme}
+                  experiences={experiences}
+                  educations={educations}
+                  languages={languages}
+                  hobbies={hobbies}
+                  skills={skills}
+                  download={true}
+                  ref={cvPreviewRef}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </dialog>
       <div className="lg:hidden">
         <div className="hero bg-base-200 min-h-screen">
           <div className="hero-content text-center">
@@ -430,3 +452,4 @@ export default function Home() {
     </div>
   );
 }
+
