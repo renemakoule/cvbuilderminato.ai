@@ -135,8 +135,8 @@ const CVPreviewCorporate: React.FC<Props> = ({ personalDetails, file, theme, exp
             <div className="space-y-4 ml-5">
               {languages.map((lang, index) => (
                 <div key={index}>
-                  <p className="font-medium mb-2 capitalize">{lang.language}</p>
-                  <div className="flex">{getStarRating(lang.proficiency)}</div>
+                  <p className="text-sm b-2 capitalize">{lang.language}</p>
+                  <div className="flex h-4">{getStarRating(lang.proficiency)}</div>
                 </div>
               ))}
             </div>
@@ -156,21 +156,21 @@ const CVPreviewCorporate: React.FC<Props> = ({ personalDetails, file, theme, exp
         </div>
 
         {/* Right Column */}
-        <div className="col-span-2 p-12 bg-white">
+        <div className="col-span-2 p-10 bg-white">
           {/* Header */}
           <header className="mb-12">
-            <h1 className="text-4xl font-bold tracking-tight mb-2">{personalDetails.fullName}</h1>
+            <h1 className="text-3xl font-bold tracking-tight mb-2">{personalDetails.fullName}</h1>
             <h2 className="text-2xl text-primary font-semibold mb-6">{personalDetails.postSeeking}</h2>
-            <p className="text-gray-600 leading-relaxed">{personalDetails.description}</p>
+            <p className="text-gray-600 leading-relaxed text-sm">{personalDetails.description}</p>
           </header>
 
           {/* Experience */}
           <section className="mb-12">
-            <h3 className="text-2xl font-semibold mb-6 flex items-center gap-2">
+            <h3 className="text-xl font-semibold mb-6 flex items-center gap-2">
               <BriefcaseBusiness className="w-6 h-6 text-primary" />
               Professional Experience
             </h3>
-            <div className="space-y-4">
+            <div className="space-y-1">
               {experiences.map((exp, index) => (
                 <div key={index} className="relative pl-8">
                   <div className="absolute left-0 top-[14px] w-3 h-3 rounded-full border-2 border-primary bg-white" />
@@ -178,13 +178,13 @@ const CVPreviewCorporate: React.FC<Props> = ({ personalDetails, file, theme, exp
                     <div className="flex justify-between items-start mb-2">
                       <div>
                         <h4 className="text-lg font-semibold">{exp.jobTitle}</h4>
-                        <p className="text-primary">{exp.companyName}</p>
+                        <p className="text-primary text-sm">{exp.companyName}</p>
                       </div>
-                      <span className="text-sm bg-gray-100 px-3 py-1 rounded-full">
+                      <span className="text-xs bg-gray-100 px-3 py-1 rounded-full">
                         {formatDate(exp.startDate)} - {formatDate(exp.endDate)}
                       </span>
                     </div>
-                    <p className="text-gray-600">{exp.description}</p>
+                    <p className="text-gray-600 text-sm">{exp.description}</p>
                   </div>
                 </div>
               ))}
@@ -193,11 +193,11 @@ const CVPreviewCorporate: React.FC<Props> = ({ personalDetails, file, theme, exp
 
           {/* Education */}
           <section>
-            <h3 className="text-2xl font-semibold mb-6 flex items-center gap-2">
+            <h3 className="text-xl font-semibold mb-6 flex items-center gap-2">
               <GraduationCap className="w-6 h-6 text-primary" />
               Formation
             </h3>
-            <div className="space-y-4">
+            <div className="space-y-1">
               {educations.map((edu, index) => (
                 <div key={index} className="relative pl-8">
                   <div className="absolute left-0 top-[14px] w-3 h-3 rounded-full border-2 border-primary bg-white" />
@@ -205,13 +205,13 @@ const CVPreviewCorporate: React.FC<Props> = ({ personalDetails, file, theme, exp
                     <div className="flex justify-between items-start mb-2">
                       <div>
                         <h4 className="text-lg font-semibold">{edu.degree}</h4>
-                        <p className="text-primary">{edu.school}</p>
+                        <p className="text-primary text-sm">{edu.school}</p>
                       </div>
-                      <span className="text-sm bg-gray-100 px-3 py-1 rounded-full">
+                      <span className="text-xs bg-gray-100 px-3 py-1 rounded-full">
                         {formatDate(edu.startDate)} - {formatDate(edu.endDate)}
                       </span>
                     </div>
-                    <p className="text-gray-600">{edu.description}</p>
+                    <p className="text-gray-600 text-sm">{edu.description}</p>
                   </div>
                 </div>
               ))}

@@ -63,7 +63,7 @@ const CVPreviewClassic: React.FC<Props> = ({ personalDetails, file, theme, exper
       <header className="px-12 pt-12 pb-8 border-b">
         <div className="flex justify-between items-start">
           <div>
-            <h1 className="text-4xl font-serif mb-2">{personalDetails.fullName}</h1>
+            <h1 className="text-3xl font-serif mb-2">{personalDetails.fullName}</h1>
             <h2 className="text-2xl text-primary font-serif">{personalDetails.postSeeking}</h2>
           </div>
           {file && (
@@ -84,7 +84,7 @@ const CVPreviewClassic: React.FC<Props> = ({ personalDetails, file, theme, exper
           )}
         </div>
         
-        <div className="mt-6 flex gap-8 text-sm">
+        <div className="mt-6 flex gap-8 text-xs">
           {personalDetails.phone && (
             <div className="flex items-center gap-2">
               <Phone className="w-4 h-4 text-primary" />
@@ -110,7 +110,7 @@ const CVPreviewClassic: React.FC<Props> = ({ personalDetails, file, theme, exper
         {/* Profile */}
         <section className="mb-8">
           <h3 className="text-xl font-serif border-b border-primary pb-2 mb-4">Profil</h3>
-          <p className="text-gray-700 leading-relaxed">{personalDetails.description}</p>
+          <p className="text-gray-700 leading-relaxed text-sm">{personalDetails.description}</p>
         </section>
 
         {/* Two Column Layout */}

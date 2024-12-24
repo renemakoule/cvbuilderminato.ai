@@ -127,7 +127,7 @@ export default function FUIHeroSectionWithLogoClouds() {
             <Link href='https://minato-ai.vercel.app/' className="hover:text-purple-400"><u>Minato.ai</u></Link>
             </p>
             <div className="items-center gap-x-3 space-y-3 sm:flex sm:space-y-0">
-              <Link href='/Cv' target="_blank">
+              <Link href='/Connection' target="_blank">
               <button className="inline-flex h-12 btn btn-outline items-center justify-center font-geist rounded-md ">
                 Create Cv
                 <svg
@@ -168,4 +168,3 @@ export default function FUIHeroSectionWithLogoClouds() {
     </div>
   );
 }
-
