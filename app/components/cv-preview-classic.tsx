@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Education, Experience, Hobby, Language, PersonalDetails, Skill } from '@/type';
-import { BriefcaseBusiness, GraduationCap, Mail, MapPinIcon as MapPinCheckInside, Phone, Star } from 'lucide-react'
+import { Mail, MapPinIcon as MapPinCheckInside, Phone, Star } from 'lucide-react'
 import Image from 'next/image'
 import React from 'react'
 
